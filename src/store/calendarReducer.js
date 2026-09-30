@@ -155,7 +155,7 @@ export function calendarReducer(state, action) {
       return {
         ...state,
         events: restoreIds(state.events, state.confirmed, ids),
-        history: dropFailedCommand(state.history, action.commandId, ids),
+      history: dropFailedCommand(state.history, action.commandId.split("#")[0], ids),
         pending,
         sync: {
           status: "failed",
