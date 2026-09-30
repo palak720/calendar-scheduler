@@ -49,28 +49,38 @@ DummyJSON saves nothing and has no events, so the browser store is the source of
 
 ## Finished features
 
+## Finished features
+
+Checked items were tested manually.
+
 - [x] Login with `POST /auth/login`, clear errors, protected routes, logout, double-click safe
 - [x] Session restore with `GET /auth/me` on reload
-- [x] Single Axios instance: token attach, 401 then one refresh then retry, one error shape, single-flight refresh
+- [x] Single shared Axios instance with token attach and one consistent error shape
 - [x] API calls only in service files
 - [x] Week and month views with previous / next / today
 - [x] View, date, timezone and attendee filter stored in the URL, bad values fall back safely
 - [x] Drag on empty slots to create, snapped to 15 minutes, validated form
-- [x] Move and resize with live preview, Esc cancels, one drag = one undo step
-- [x] Keyboard alternative: focus an event, press `M`, arrows to move, Enter to confirm
 - [x] Overlap layout written from scratch (side by side columns)
-- [x] Recurring events: daily / weekly / monthly (same date or nth weekday), until date or count
-- [x] Edit and delete scopes: this event / this and following / all events
 - [x] Searchable attendee multi-select (own component, debounced, cancels stale requests)
 - [x] Live busy warning when an attendee has an overlapping event
 - [x] Timezone switcher (UTC storage, Intl display)
 - [x] Undo / redo with buttons and Ctrl+Z / Ctrl+Shift+Z
 - [x] `/events/:id` details dialog, survives refresh, "Event not found" for bad ids
-- [x] Fake sync (fails about 20% of the time) with saving / saved / failed status and rollback
-- [x] Drag state in refs, `requestAnimationFrame` preview, memoized blocks
-- [x] Double submit guard for Save, Login and Delete
+- [x] Double submit guard for Save and Login
 - [x] Multi-tab logout
-- [x] Accessibility: `role="grid"` with arrow keys, modal focus trap, Esc closes, `aria-live` announcements
+
+## Implemented, not fully tested
+
+The code for these is in the repository, but I have not verified them end to end yet, so they may have bugs.
+
+- [ ] 401 then one refresh then retry (single-flight refresh)
+- [ ] Move and resize with live preview, Esc cancels, one drag = one undo step
+- [ ] Drag performance (state in refs, `requestAnimationFrame` preview, memoized blocks)
+- [ ] Keyboard alternative: focus an event, press `M`, arrows to move, Enter to confirm
+- [ ] Recurring events (daily / weekly / monthly, until date or count) and month-end / DST handling
+- [ ] Edit and delete scopes: this event / this and following / all events
+- [ ] Fake sync (fails about 20% of the time) with saving / saved / failed status and rollback
+- [ ] Accessibility: grid arrow keys, modal focus trap, `aria-live` announcements
 
 ## Performance notes (500+ events)
 
