@@ -10,10 +10,12 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
 
-        {/* Ye sab pages login ke baad hi khulte hain */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<CalendarPage />} />
-          {/* /events/:id route event details ke step mein aayega */}
+          {/* /events/:id child route hai: CalendarPage mounted rehta hai,
+              details dialog uske upar khulta hai. Refresh par wahi dialog dobara khulta hai. */}
+          <Route path="/" element={<CalendarPage />}>
+            <Route path="events/:id" element={null} />
+          </Route>
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
